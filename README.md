@@ -9,6 +9,25 @@
 
 ---
 
+## 🧭 Status & Roadmap
+
+> 🚧 **Early development.** The feature list below is the plan — the repo currently holds the **feature-first folder structure** and the **state-management dependencies**. Day 1 (wiring the architecture + state management, issue `#1`) is still in progress.
+
+| # | Task | Status |
+| --- | --- | --- |
+| `#1` | Architecture & state management | 🚧 in progress (folders + deps only) |
+| `#2` | `SortingPainter` canvas engine | ⬜ planned |
+| `#3` | Async Bubble Sort stream | ⬜ planned |
+| `#4` | Playback control bar + speed slider | ⬜ planned |
+| `#5` | Quick Sort + color-coded states | ⬜ planned |
+| `#6` | 2D grid painter | ⬜ planned |
+| `#7` | Touch gesture layer (drag-to-draw walls) | ⬜ planned |
+| `#8` | BFS pathfinding engine | ⬜ planned |
+| `#9` | Pitch-modulated audio feedback | ⬜ planned |
+| `#10` | Cyber-Circuit theme + README polish | ⬜ planned |
+
+---
+
 ## ✨ Key Features
 
 ### 📊 1. Sorting Algorithm Engine
@@ -58,24 +77,26 @@
 
 1. **Clone the repository**:
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/algo_viz.git](https://github.com/YOUR_USERNAME/algo_viz.git)
-   cd algo_viz
+   git clone https://github.com/asaerxd6767/AlgoViz.git
+   cd AlgoViz
    ```
 
-````
-
 2. **Install dependencies**:
-```bash
-flutter pub get
-
-````
+   ```bash
+   flutter pub get
+   ```
 
 3. **Run the app**:
+   ```bash
+   flutter run
+   ```
 
-```bash
-flutter run
+---
 
-```
+## 👨‍💻 Contributors
+
+- **Asser** (@asaerxd6767) — project lead
+- **Sara Mohammed** — welcome aboard! 👋
 
 ---
 
