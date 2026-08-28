@@ -1,3 +1,7 @@
+# Local opencode assistant files
+AGENTS.md
+opencode.json
+
 # Miscellaneous
 *.class
 *.log
