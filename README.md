@@ -15,7 +15,7 @@
 
 | # | Task | Status |
 | --- | --- | --- |
-| `#1` | Architecture & state management | 🚧 in progress (folders + deps only) |
+| `#1` | Architecture & state management | ✅ Done |
 | `#2` | `SortingPainter` canvas engine | ⬜ planned |
 | `#3` | Async Bubble Sort stream | ⬜ planned |
 | `#4` | Playback control bar + speed slider | ⬜ planned |
