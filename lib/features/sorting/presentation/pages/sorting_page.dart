@@ -27,19 +27,21 @@ class SortingPage extends StatelessWidget {
             BlocBuilder<SortingCubit, SortingState>(
               builder: (context, state) {
                 return Column(
-                  mainAxisSize: .min,
+                  spacing: AppSpacing.lg,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(state.status.name.toUpperCase()),
                     Row(
-                      mainAxisAlignment: .center,
+                      spacing: AppSpacing.md,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         OutlinedButton(
                           onPressed: () => context.read<SortingCubit>().start(),
-                          child: Text('start'),
+                          child: const Text('start'),
                         ),
                         OutlinedButton(
                           onPressed: () => context.read<SortingCubit>().reset(),
-                          child: Text('reset'),
+                          child: const Text('reset'),
                         ),
                       ],
                     ),
