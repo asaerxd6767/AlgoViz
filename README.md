@@ -11,7 +11,7 @@
 
 ## 🧭 Status & Roadmap
 
-> 🚧 **Early development.** The feature list below is the plan — the repo currently holds the **feature-first folder structure** and the **state-management dependencies**. Day 1 (wiring the architecture + state management, issue `#1`) is still in progress.
+> ✅ **Day 1 complete.** The feature-first architecture is applied and the state-management wiring is live — issue `#1` closed with commit `23bb0c2`. The app currently boots a placeholder **SortingPage** wired to a `SortingCubit` via `BlocProvider`; the Play/Reset buttons flip the status label and prove the BloC loop end-to-end. The roadmap below is the plan — each issue closes with its own commit.
 
 | # | Task | Status |
 | --- | --- | --- |
@@ -25,6 +25,29 @@
 | `#8` | BFS pathfinding engine | ⬜ planned |
 | `#9` | Pitch-modulated audio feedback | ⬜ planned |
 | `#10` | Cyber-Circuit theme + README polish | ⬜ planned |
+
+### What shipped so far — Day 1 (Architecture & State Management)
+
+- **Feature-first folder structure**: `core/` holds shared theme + constants; `features/sorting/` owns its own `domain/` + `presentation/`.
+- **Boot flow**: `main.dart` → `AlgoVizApp` (`lib/app.dart`) → `MaterialApp` themed with Cyber-Circuit `AppTheme.dark`.
+- **State management**: `SortingCubit` + `SortingState` live in `presentation/bloc/`, registered with `BlocProvider` on the home route and consumed by `SortingPage` via `BlocBuilder`.
+- **Design tokens**: `AppBrand` + `AppSpacing` (strict 4px grid) in `core/constants/app_constants.dart`.
+- **Prove-it behavior**: tapping **Play** flips the status `idle → running`; **Reset** returns to `idle`.
+
+```text
+lib/
+├── main.dart                     # bootstrap → runApp(const AlgoVizApp())
+├── app.dart                      # AlgoVizApp: MaterialApp(theme) + BlocProvider
+├── core/
+│   ├── constants/                # AppBrand + AppSpacing (4px-grid tokens)
+│   └── theme/                    # AppColors + AppTheme.dark (Cyber-Circuit)
+└── features/sorting/
+    ├── domain/                   # models land on Day 2 (#2)
+    └── presentation/
+        ├── bloc/sorting_cubit.dart
+        ├── pages/sorting_page.dart
+        └── widgets/              # ControlBar lands on Day 4 (#4)
+```
 
 ---
 
@@ -88,7 +111,7 @@
 
 3. **Run the app**:
    ```bash
-   flutter run
+   flutter run -d chrome   # web is enabled; use any other device id
    ```
 
 ---
