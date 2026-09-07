@@ -11,12 +11,12 @@
 
 ## 🧭 Status & Roadmap
 
-> ✅ **Day 1 complete.** The feature-first architecture is applied and the state-management wiring is live — issue `#1` closed with commit `23bb0c2`. The app currently boots a placeholder **SortingPage** wired to a `SortingCubit` via `BlocProvider`; the Play/Reset buttons flip the status label and prove the BloC loop end-to-end. The roadmap below is the plan — each issue closes with its own commit.
+> ✅ **Day 2 complete.** The `SortingPainter` canvas is live — issue `#2` closed with commit `bedeae9`. The app now renders 48 randomized bottom-anchored bars via `CustomPainter` inside a `RepaintBoundary`; the bars flow from `SortingState` (single source of truth) and **Reset** reshuffles them on the spot. The roadmap below is the plan — each issue closes with its own commit.
 
 | # | Task | Status |
 | --- | --- | --- |
 | `#1` | Architecture & state management | ✅ Done |
-| `#2` | `SortingPainter` canvas engine | ⬜ planned |
+| `#2` | `SortingPainter` canvas engine | ✅ Done |
 | `#3` | Async Bubble Sort stream | ⬜ planned |
 | `#4` | Playback control bar + speed slider | ⬜ planned |
 | `#5` | Quick Sort + color-coded states | ⬜ planned |
@@ -34,6 +34,13 @@
 - **Design tokens**: `AppBrand` + `AppSpacing` (strict 4px grid) in `core/constants/app_constants.dart`.
 - **Prove-it behavior**: tapping **Play** flips the status `idle → running`; **Reset** returns to `idle`.
 
+### What shipped so far — Day 2 (SortingPainter Canvas)
+
+- **Domain model**: `SortBarModel` `(value, BarState)` in `domain/models/` — immutable, `const` ctor, `copyWith`; `BarState` enum `normal | comparing | swapping | sorted` ready for color-coding.
+- **The painter**: `SortingPainter` in `presentation/widgets/` — gap-aware width math `(width − (count−1)·gap) / count` so all bars always fit, bottom-anchored, colors via `switch` on `BarState` → `AppColors` tokens (never hex).
+- **The view**: `SortBarsView` wraps the painter in `RepaintBoundary(child: CustomPaint(painter: …, child: SizedBox.expand()))`.
+- **State of truth**: `SortingState` owns `List<SortBarModel> bars` (required field); the cubit mints the initial array and **Reset** re-mints a fresh one — the visualizer reshuffles on demand.
+
 ```text
 lib/
 ├── main.dart                     # bootstrap → runApp(const AlgoVizApp())
@@ -42,11 +49,11 @@ lib/
 │   ├── constants/                # AppBrand + AppSpacing (4px-grid tokens)
 │   └── theme/                    # AppColors + AppTheme.dark (Cyber-Circuit)
 └── features/sorting/
-    ├── domain/                   # models land on Day 2 (#2)
+    ├── domain/models/           # SortBarModel (value + BarState) — Day 2 (#2)
     └── presentation/
         ├── bloc/sorting_cubit.dart
         ├── pages/sorting_page.dart
-        └── widgets/              # ControlBar lands on Day 4 (#4)
+        └── widgets/             # SortingPainter + SortBarsView (#2); ControlBar Day 4 (#4)
 ```
 
 ---
