@@ -123,13 +123,6 @@ lib/
 
 ---
 
-## 👨‍💻 Contributors
-
-- **Asser** (@asaerxd6767) — project lead
-- **Sara Mohammed** — welcome aboard! 👋
-
----
-
 ## 📄 License
 
 This project is open-source under the [MIT License](https://www.google.com/search?q=LICENSE).
